@@ -7,12 +7,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         field: 'post_id',
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-        references: {
-          model: 'BlogPost',
-          key: 'id',
-        },
+        // onUpdate: 'CASCADE',
+        // onDelete: 'CASCADE',
+        // references: {
+        //   model: 'BlogPosts',
+        //   key: 'id',
+        // },
         primaryKey: true,
       },
       categoryId: {
@@ -22,7 +22,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
-          model: 'Category',
+          model: 'Categories',
           key: 'id'
         },
         primaryKey: true,
