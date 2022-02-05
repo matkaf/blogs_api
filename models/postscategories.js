@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
 const PostsCategory = (sequelize, _DataTypes) => {
-  const postsCategory = sequelize.define('PostsCategories',
+  const postsCategory = sequelize.define('PostsCategory',
   {}, {
     timestamps: false,
     underscored: true,
