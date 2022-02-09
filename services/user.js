@@ -36,10 +36,9 @@ const createUser = async (body) => {
       where: { email: body.email },
       defaults: body,
     });
-    console.log('created:', created);
-    console.log('user:', user);
+
     if (!created) return { code: 400, message: 'User already registered' };
-    
+
     return { code: 201, message: user };
   } catch (error) {
     console.log(error);

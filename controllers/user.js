@@ -21,10 +21,13 @@ const emailExists = async (req, res, next) => {
 };
 
 const createUser = async (req, res) => {
+  const token = 'fsagdahdhdfhteste';
   const { body } = req;
   const { code, message } = await User.createUser(body);
 
-  return res.status(code).json({ message });
+  if (code !== 201) return res.status(code).json({ message });
+
+  return res.status(code).json({ token });
 };
 
 module.exports = {
