@@ -1,6 +1,6 @@
 const BlogPost = (sequelize, DataTypes) => {
   const blogPost = sequelize.define('BlogPost', {
-    id: DataTypes.INTEGER,
+    id: { type: DataTypes.INTEGER, primaryKey: true },
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
