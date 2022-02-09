@@ -14,4 +14,6 @@ app.get('/', (request, response) => {
   response.send();
 });
 
-app.post('/user', User.validateUser, User.emailExists, User.createUser);
+// app.post('/user', User.validateUser, User.emailExists, User.createUser);
+
+app.post('/user', User.validateUser, User.createUser);

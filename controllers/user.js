@@ -20,10 +20,11 @@ const emailExists = async (req, res, next) => {
   next();
 };
 
-const createUser = (_req, res) => {
-  const token = 0;
+const createUser = async (req, res) => {
+  const { body } = req;
+  const { code, message } = await User.createUser(body);
 
-  return res.status(201).json(token);
+  return res.status(code).json({ message });
 };
 
 module.exports = {

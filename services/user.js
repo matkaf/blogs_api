@@ -30,7 +30,25 @@ const emailExists = async (email) => {
   }
 };
 
+const createUser = async (body) => {
+  try {
+    const [user, created] = await User.findOrCreate({
+      where: { email: body.email },
+      defaults: body,
+    });
+    console.log('created:', created);
+    console.log('user:', user);
+    if (!created) return { code: 400, message: 'User already registered' };
+    
+    return { code: 201, message: user };
+  } catch (error) {
+    console.log(error);
+    return { code: 500, message: error.message };
+  }
+};
+
 module.exports = {
   validateUser,
   emailExists,
+  createUser,
 };
