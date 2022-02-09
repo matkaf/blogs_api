@@ -37,7 +37,7 @@ const createUser = async (body) => {
       defaults: body,
     });
 
-    if (!created) return { code: 400, message: 'User already registered' };
+    if (!created) return { code: 409, message: 'User already registered' };
 
     return { code: 201, message: user };
   } catch (error) {
