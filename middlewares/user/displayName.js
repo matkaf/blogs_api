@@ -4,7 +4,7 @@ const isNameValid = (name) => {
   const isString = typeof name === 'string';
   const validLength = name.length > 7;
 
-  if (!isString) return { code: 400, message: '"name" is not a string' };
+  if (!isString) return { code: 400, message: '"displayName" is not a string' };
 
   if (!validLength) {
     return {
