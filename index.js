@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const User = require('./controllers/user');
+const createToken = require('./api/auth/createJWT');
 
 const app = express();
 
@@ -14,6 +15,6 @@ app.get('/', (request, response) => {
   response.send();
 });
 
-// app.post('/user', User.validateUser, User.emailExists, User.createUser);
-
 app.post('/user', User.validateUser, User.createUser);
+
+app.post('/login', User.validateLogin, User.findUser, createToken);

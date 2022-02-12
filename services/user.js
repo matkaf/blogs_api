@@ -20,16 +20,6 @@ const validateUser = (body) => {
   return { code: 201 };
 };
 
-const emailExists = async (email) => {
-  try {
-    const isRegistered = await User.findOne({ where: { email } });
-    if (isRegistered) return { code: 400, message: 'User already registered' };
-    return false;
-  } catch (error) {
-    return { code: 500, message: 'DB connection issue' };
-  }
-};
-
 const createUser = async (body) => {
   try {
     const [user, created] = await User.findOrCreate({
@@ -46,8 +36,32 @@ const createUser = async (body) => {
   }
 };
 
+const validateLogin = (email, password) => {
+  const verify = [
+    isEmailValid(email),
+    isPasswordValid(password),
+  ];
+  
+  const anyIssue = verify.find((res) => res.code !== 201);
+
+  if (anyIssue) return anyIssue;
+
+  return { code: 201 };
+};
+
+const findUser = async (email, password) => {
+  const user = await User.findOne({
+    where: { email, password },
+  });
+
+  if (!user) return { code: 400, message: 'Invalid fields' };
+
+  return { code: 200 };
+};
+
 module.exports = {
   validateUser,
-  emailExists,
   createUser,
+  validateLogin,
+  findUser,
 };
