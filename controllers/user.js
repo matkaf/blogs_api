@@ -3,7 +3,7 @@ const User = require('../services/user');
 require('dotenv').config();
 
 const secret = process.env.JWT_SECRET;
-const jwtConfig = {
+const config = {
   expiresIn: '1d',
   algorithm: 'HS256',
 };
@@ -27,7 +27,7 @@ const createUser = async (req, res) => {
 
   const token = jwt.sign({ data: { email: body.email, password: body.password } },
     secret,
-    jwtConfig);
+    config);
 
   return res.status(code).json({ token });
 };
