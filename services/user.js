@@ -59,9 +59,19 @@ const findUser = async (email, password) => {
   return { code: 200 };
 };
 
+const getAll = async () => {
+  try {
+    const data = await User.findAll();
+    return data;
+  } catch (error) {
+    return { code: 500 }; 
+  }
+};
+
 module.exports = {
   validateUser,
   createUser,
   validateLogin,
   findUser,
+  getAll,
 };

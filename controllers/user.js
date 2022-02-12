@@ -50,9 +50,16 @@ const findUser = async (req, res, next) => {
   next();
 };
 
+const getAll = async (_req, res) => {
+  const data = await User.getAll();
+
+  return res.status(200).json(data);
+};
+
 module.exports = {
   validateUser,
   createUser,
   validateLogin,
   findUser,
+  getAll,
 };

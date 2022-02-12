@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const User = require('./controllers/user');
 const createToken = require('./api/auth/createJWT');
+const validateToken = require('./api/auth/validateJWT');
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.listen(3000, () => console.log('ouvindo porta 3000!'));
 app.get('/', (request, response) => {
   response.send();
 });
+
+app.get('/user', validateToken, User.getAll);
 
 app.post('/user', User.validateUser, User.createUser);
 
