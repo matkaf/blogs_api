@@ -53,6 +53,7 @@ const findUser = async (req, res, next) => {
 const getAll = async (_req, res) => {
   const data = await User.getAll();
 
+  if (data.code) return res.status(data.code).json({ message: data.message });
   return res.status(200).json(data);
 };
 

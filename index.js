@@ -25,4 +25,6 @@ app.post('/user', User.validateUser, User.createUser);
 
 app.post('/login', User.validateLogin, User.findUser, createToken);
 
+app.get('/categories', validateToken, Category.getAll);
+
 app.post('/categories', validateToken, Category.validateCategory, Category.createCategory);

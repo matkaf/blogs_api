@@ -64,7 +64,7 @@ const getAll = async () => {
     const data = await User.findAll();
     return data;
   } catch (error) {
-    return { code: 500 }; 
+    return { code: 500, message: 'DB connection issue' }; 
   }
 };
 

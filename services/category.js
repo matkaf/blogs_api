@@ -22,7 +22,17 @@ const createCategory = async (name) => {
   }
 };
 
+const getAll = async () => {
+  try {
+    const data = await Category.findAll();
+    return data;
+  } catch (error) {
+    return { code: 500, message: 'DB connection issue' };
+  }
+};
+
 module.exports = {
   createCategory,
   validateCategory,
+  getAll,
 };
