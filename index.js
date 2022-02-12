@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const User = require('./controllers/user');
 const Category = require('./controllers/category');
+const BlogPost = require('./controllers/blogpost');
 const createToken = require('./api/auth/createJWT');
 const validateToken = require('./api/auth/validateJWT');
 
@@ -28,3 +29,7 @@ app.post('/login', User.validateLogin, User.findUser, createToken);
 app.get('/categories', validateToken, Category.getAll);
 
 app.post('/categories', validateToken, Category.validateCategory, Category.createCategory);
+
+app.post('/post', validateToken,
+BlogPost.validateBlogPost, BlogPost.validateCategoryId,
+BlogPost.createBlogPost, BlogPost.registerIds);
