@@ -16,6 +16,8 @@ app.get('/', (request, response) => {
   response.send();
 });
 
+app.get('/user/:id', validateToken, User.getById);
+
 app.get('/user', validateToken, User.getAll);
 
 app.post('/user', User.validateUser, User.createUser);
