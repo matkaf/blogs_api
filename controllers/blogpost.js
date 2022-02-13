@@ -46,9 +46,18 @@ const registerIds = async (req, res) => {
   return res.status(201).json({ id: post.id, userId, title: post.title, content: post.content });
 };
 
+const getAll = async (_req, res) => {
+  const data = await BlogPost.getAll();
+
+  if (data.code) return res.status(500).json({ message: data.message });
+
+  return res.status(200).json(data);
+};
+
 module.exports = {
   validateBlogPost,
   validateCategoryId,
   createBlogPost,
   registerIds,
+  getAll,
 };
