@@ -88,7 +88,7 @@ const getById = async (id) => {
     });
 
     if (!data) return { code: 404, message: 'Post does not exist' };
-    
+
     return data;
   } catch (error) {
     return { code: 500, message: error.message };
