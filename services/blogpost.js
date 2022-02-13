@@ -2,7 +2,7 @@ const validTitle = require('../middlewares/blogpost/title');
 const validContent = require('../middlewares/blogpost/content');
 const validCategoryIds = require('../middlewares/blogpost/categoryIds');
 
-const { Category, BlogPost, PostsCategory, User } = require('../models');
+const { Category, BlogPost, PostsCategory } = require('../models');
 
 const validateBlogPost = (title, content, categoryIds) => {
  const verify = [
@@ -55,10 +55,20 @@ const registerIds = async (postId, categoryId) => {
 
 const getAll = async () => {
   try {
-    const data = await BlogPost.findAll({ include: User });
+    const data = await BlogPost.findAll({
+      include: [
+        'user',
+        { model: Category,
+          as: 'categories',
+          through: {
+            attributes: [],
+          },
+        },     
+      ],
+    });
     return data;
   } catch (error) {
-    return { code: 500, message: 'DB connection issue on getAll model' };
+    return { code: 500, message: error.message };
   }
 };
 

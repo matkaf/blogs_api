@@ -48,6 +48,7 @@ const registerIds = async (req, res) => {
 
 const getAll = async (_req, res) => {
   const data = await BlogPost.getAll();
+  console.log('data:', data);
 
   if (data.code) return res.status(500).json({ message: data.message });
 
