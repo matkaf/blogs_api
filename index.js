@@ -30,6 +30,8 @@ app.get('/categories', validateToken, Category.getAll);
 
 app.post('/categories', validateToken, Category.validateCategory, Category.createCategory);
 
+app.get('/post/:id', validateToken, BlogPost.getById);
+
 app.get('/post', validateToken, BlogPost.getAll);
 
 app.post('/post', validateToken,

@@ -55,10 +55,20 @@ const getAll = async (_req, res) => {
   return res.status(200).json(data);
 };
 
+const getById = async (req, res) => {
+  const { id } = req.params;
+  const data = await BlogPost.getById(id);
+
+  if (data.code) return res.status(data.code).json({ message: data.message });
+
+  return res.status(200).json(data);
+};
+
 module.exports = {
   validateBlogPost,
   validateCategoryId,
   createBlogPost,
   registerIds,
   getAll,
+  getById,
 };
