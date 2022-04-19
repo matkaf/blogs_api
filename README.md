@@ -1,3 +1,6 @@
+# Blogs CRUD API
+## Essa é uma API CRUD para criação de posts em um blog. Ela foi feita utilizando Javascript e Node.js, além de observar o padrão REST.
+
 ### Termos e acordos
 
 Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
